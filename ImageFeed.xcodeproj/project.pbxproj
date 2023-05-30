@@ -13,6 +13,7 @@
 		EA8EC0182A1F6E8700533CD5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA8EC0162A1F6E8700533CD5 /* Main.storyboard */; };
 		EA8EC01A2A1F6E8800533CD5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA8EC0192A1F6E8800533CD5 /* Assets.xcassets */; };
 		EA8EC01D2A1F6E8800533CD5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA8EC01B2A1F6E8800533CD5 /* LaunchScreen.storyboard */; };
+		EACA3DB42A24E03C00178D7E /* ImagesListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACA3DB32A24E03C00178D7E /* ImagesListCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		EA8EC0192A1F6E8800533CD5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EA8EC01C2A1F6E8800533CD5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EA8EC01E2A1F6E8800533CD5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EACA3DB32A24E03C00178D7E /* ImagesListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesListCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,13 +60,22 @@
 			children = (
 				EA8EC0102A1F6E8700533CD5 /* AppDelegate.swift */,
 				EA8EC0122A1F6E8700533CD5 /* SceneDelegate.swift */,
-				EA8EC0142A1F6E8700533CD5 /* ImagesListViewController.swift */,
+				EACA3DB52A24E0DC00178D7E /* ImagesList */,
 				EA8EC0162A1F6E8700533CD5 /* Main.storyboard */,
 				EA8EC0192A1F6E8800533CD5 /* Assets.xcassets */,
 				EA8EC01B2A1F6E8800533CD5 /* LaunchScreen.storyboard */,
 				EA8EC01E2A1F6E8800533CD5 /* Info.plist */,
 			);
 			path = ImageFeed;
+			sourceTree = "<group>";
+		};
+		EACA3DB52A24E0DC00178D7E /* ImagesList */ = {
+			isa = PBXGroup;
+			children = (
+				EA8EC0142A1F6E8700533CD5 /* ImagesListViewController.swift */,
+				EACA3DB32A24E03C00178D7E /* ImagesListCell.swift */,
+			);
+			path = ImagesList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,6 +150,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA8EC0152A1F6E8700533CD5 /* ImagesListViewController.swift in Sources */,
+				EACA3DB42A24E03C00178D7E /* ImagesListCell.swift in Sources */,
 				EA8EC0112A1F6E8700533CD5 /* AppDelegate.swift in Sources */,
 				EA8EC0132A1F6E8700533CD5 /* SceneDelegate.swift in Sources */,
 			);
@@ -302,7 +314,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ru.yandex.practicum.ImageFeed.Popkov;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.yandex.practicum.ImageFeed.seryga808;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -335,7 +347,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ru.yandex.practicum.ImageFeed.Popkov;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.yandex.practicum.ImageFeed.seryga808;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;

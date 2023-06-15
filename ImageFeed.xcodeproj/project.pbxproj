@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EA2B14A02A39D7C900C43CB2 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2B149F2A39D7C900C43CB2 /* ProfileViewController.swift */; };
+		EA2B14A22A39D80300C43CB2 /* SingleImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2B14A12A39D80300C43CB2 /* SingleImageViewController.swift */; };
+		EA2B14A62A39D87100C43CB2 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2B14A52A39D87100C43CB2 /* Color.swift */; };
 		EA8EC0112A1F6E8700533CD5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8EC0102A1F6E8700533CD5 /* AppDelegate.swift */; };
 		EA8EC0132A1F6E8700533CD5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8EC0122A1F6E8700533CD5 /* SceneDelegate.swift */; };
 		EA8EC0152A1F6E8700533CD5 /* ImagesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8EC0142A1F6E8700533CD5 /* ImagesListViewController.swift */; };
@@ -17,6 +20,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EA2B149F2A39D7C900C43CB2 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		EA2B14A12A39D80300C43CB2 /* SingleImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleImageViewController.swift; sourceTree = "<group>"; };
+		EA2B14A52A39D87100C43CB2 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		EA8EC00D2A1F6E8700533CD5 /* ImageFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA8EC0102A1F6E8700533CD5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA8EC0122A1F6E8700533CD5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -39,9 +45,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EA2B149E2A39D71500C43CB2 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				EA2B149F2A39D7C900C43CB2 /* ProfileViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		EA8EC0042A1F6E8700533CD5 = {
 			isa = PBXGroup;
 			children = (
+				EA2B149E2A39D71500C43CB2 /* Profile */,
 				EA8EC00F2A1F6E8700533CD5 /* ImageFeed */,
 				EA8EC00E2A1F6E8700533CD5 /* Products */,
 			);
@@ -61,10 +76,9 @@
 				EA8EC0102A1F6E8700533CD5 /* AppDelegate.swift */,
 				EA8EC0122A1F6E8700533CD5 /* SceneDelegate.swift */,
 				EACA3DB52A24E0DC00178D7E /* ImagesList */,
-				EA8EC0162A1F6E8700533CD5 /* Main.storyboard */,
 				EA8EC0192A1F6E8800533CD5 /* Assets.xcassets */,
-				EA8EC01B2A1F6E8800533CD5 /* LaunchScreen.storyboard */,
 				EA8EC01E2A1F6E8800533CD5 /* Info.plist */,
+				EA2B14A52A39D87100C43CB2 /* Color.swift */,
 			);
 			path = ImageFeed;
 			sourceTree = "<group>";
@@ -72,8 +86,11 @@
 		EACA3DB52A24E0DC00178D7E /* ImagesList */ = {
 			isa = PBXGroup;
 			children = (
-				EA8EC0142A1F6E8700533CD5 /* ImagesListViewController.swift */,
 				EACA3DB32A24E03C00178D7E /* ImagesListCell.swift */,
+				EA2B14A12A39D80300C43CB2 /* SingleImageViewController.swift */,
+				EA8EC0142A1F6E8700533CD5 /* ImagesListViewController.swift */,
+				EA8EC01B2A1F6E8800533CD5 /* LaunchScreen.storyboard */,
+				EA8EC0162A1F6E8700533CD5 /* Main.storyboard */,
 			);
 			path = ImagesList;
 			sourceTree = "<group>";
@@ -151,7 +168,10 @@
 			files = (
 				EA8EC0152A1F6E8700533CD5 /* ImagesListViewController.swift in Sources */,
 				EACA3DB42A24E03C00178D7E /* ImagesListCell.swift in Sources */,
+				EA2B14A02A39D7C900C43CB2 /* ProfileViewController.swift in Sources */,
 				EA8EC0112A1F6E8700533CD5 /* AppDelegate.swift in Sources */,
+				EA2B14A22A39D80300C43CB2 /* SingleImageViewController.swift in Sources */,
+				EA2B14A62A39D87100C43CB2 /* Color.swift in Sources */,
 				EA8EC0132A1F6E8700533CD5 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

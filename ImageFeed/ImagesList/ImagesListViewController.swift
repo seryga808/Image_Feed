@@ -1,4 +1,4 @@
-import UIKit //test
+import UIKit
 
 final class ImagesListViewController: UIViewController {
     private let ShowSingleImageSegueIdentifier = "ShowSingleImage"

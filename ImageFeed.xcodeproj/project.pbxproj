@@ -25,6 +25,7 @@
 		EAB166D62A4DB5EC00A5C74E /* WebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB166D52A4DB5EC00A5C74E /* WebViewViewController.swift */; };
 		EACA3DB42A24E03C00178D7E /* ImagesListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACA3DB32A24E03C00178D7E /* ImagesListCell.swift */; };
 		EAF008E02A5D8E0D0088C884 /* UIBlockingProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF008DF2A5D8E0D0088C884 /* UIBlockingProgressHUD.swift */; };
+		EAF008E22A5D8EE70088C884 /* RequestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF008E12A5D8EE70088C884 /* RequestHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		EAB166D52A4DB5EC00A5C74E /* WebViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewViewController.swift; sourceTree = "<group>"; };
 		EACA3DB32A24E03C00178D7E /* ImagesListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesListCell.swift; sourceTree = "<group>"; };
 		EAF008DF2A5D8E0D0088C884 /* UIBlockingProgressHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBlockingProgressHUD.swift; sourceTree = "<group>"; };
+		EAF008E12A5D8EE70088C884 /* RequestHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				EAF008DF2A5D8E0D0088C884 /* UIBlockingProgressHUD.swift */,
+				EAF008E12A5D8EE70088C884 /* RequestHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -243,6 +246,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAF008E22A5D8EE70088C884 /* RequestHelper.swift in Sources */,
 				EA8EC0152A1F6E8700533CD5 /* ImagesListViewController.swift in Sources */,
 				EACA3DB42A24E03C00178D7E /* ImagesListCell.swift in Sources */,
 				EA0F2A7B2A4C73A7008ADA75 /* OAuth2Service.swift in Sources */,

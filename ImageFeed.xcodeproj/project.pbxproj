@@ -24,6 +24,7 @@
 		EAB166D42A4DB5C800A5C74E /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB166D32A4DB5C800A5C74E /* AuthViewController.swift */; };
 		EAB166D62A4DB5EC00A5C74E /* WebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB166D52A4DB5EC00A5C74E /* WebViewViewController.swift */; };
 		EACA3DB42A24E03C00178D7E /* ImagesListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACA3DB32A24E03C00178D7E /* ImagesListCell.swift */; };
+		EAF008E02A5D8E0D0088C884 /* UIBlockingProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF008DF2A5D8E0D0088C884 /* UIBlockingProgressHUD.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		EAB166D32A4DB5C800A5C74E /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		EAB166D52A4DB5EC00A5C74E /* WebViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewViewController.swift; sourceTree = "<group>"; };
 		EACA3DB32A24E03C00178D7E /* ImagesListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesListCell.swift; sourceTree = "<group>"; };
+		EAF008DF2A5D8E0D0088C884 /* UIBlockingProgressHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBlockingProgressHUD.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 		EA8EC00F2A1F6E8700533CD5 /* ImageFeed */ = {
 			isa = PBXGroup;
 			children = (
+				EAF008DE2A5D8D3C0088C884 /* Helpers */,
 				EA2B149E2A39D71500C43CB2 /* Profile */,
 				EAB166D72A4DB62100A5C74E /* SingleImage */,
 				EAB166D22A4DB58D00A5C74E /* Auth */,
@@ -153,6 +156,14 @@
 				EA8EC0142A1F6E8700533CD5 /* ImagesListViewController.swift */,
 			);
 			path = ImagesList;
+			sourceTree = "<group>";
+		};
+		EAF008DE2A5D8D3C0088C884 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				EAF008DF2A5D8E0D0088C884 /* UIBlockingProgressHUD.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -245,6 +256,7 @@
 				EA8EC0132A1F6E8700533CD5 /* SceneDelegate.swift in Sources */,
 				EA0F2A7F2A4C7428008ADA75 /* OAuth2TokenResponseBody.swift in Sources */,
 				EAB166D12A4DB53900A5C74E /* SplashViewController.swift in Sources */,
+				EAF008E02A5D8E0D0088C884 /* UIBlockingProgressHUD.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

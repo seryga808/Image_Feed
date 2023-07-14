@@ -34,9 +34,8 @@ final class ProfileService {
     private let urlSession = URLSession.shared
     private var task: URLSessionTask?
     private(set) var profile: Profile?
-
-        func fetchProfile(_ token: String, completion: @escaping (Result<ProfileResult, Error>) -> Void) {
-        assert(Thread.isMainThread)
+    
+    func fetchProfile(_ token: String, completion: @escaping (Result<ProfileResult, Error>) -> Void) {
         task?.cancel()
         
         let request = makeRequest(token: token)
@@ -53,11 +52,10 @@ final class ProfileService {
                 completion(.failure(error))
             }
         }
-
+        
         self.task = task
         task.resume()
     }
-       
     
     private func makeRequest(token: String) -> URLRequest {
         var urlComponents = URLComponents()
@@ -65,12 +63,13 @@ final class ProfileService {
         
         guard let url = urlComponents.url(relativeTo: defaultBaseURL) else {
             fatalError("Failed to create URL")
+            
         }
-
+        
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         return request
+        
     }
-    
 }

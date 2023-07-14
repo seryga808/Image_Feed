@@ -24,7 +24,6 @@ final class ProfileImageService {
     private let urlSession = URLSession.shared
     
     func fetchProfileImageURL(username: String, token: String, _ completion: @escaping (Result<String, Error>) -> Void) {
-        assert(Thread.isMainThread)
         task?.cancel()
         
         let request = makeRequest(token: token, username: username)
@@ -65,5 +64,4 @@ final class ProfileImageService {
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         return request
     }
-    
 }

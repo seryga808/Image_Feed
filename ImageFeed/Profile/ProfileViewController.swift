@@ -38,7 +38,7 @@ final class ProfileViewController: UIViewController {
     }()
     
     private var imageViewUserPic: UIImageView = {
-        let profileImage = UIImage(named: "avatar")
+        let profileImage = UIImage(named: "userpic")
         let imageViewUserPic = UIImageView(image: profileImage)
         imageViewUserPic.tintColor = .gray
         return imageViewUserPic
@@ -104,9 +104,9 @@ final class ProfileViewController: UIViewController {
     }
     
     private func updateProfileDetails(profile: Profile) {
-        labelFullName.text = profile.name
-        labelUserName.text = profile.loginName
-        labelGreetings.text = profile.bio
+        self.labelFullName.text = profile.name
+        self.labelUserName.text = profile.loginName
+        self.labelGreetings.text = profile.bio
     }
     
     private func initProfile() {

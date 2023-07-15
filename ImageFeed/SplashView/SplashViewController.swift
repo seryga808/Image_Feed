@@ -85,7 +85,7 @@ extension SplashViewController: AuthViewControllerDelegate {
                 self.fetchProfile(token: token)
             case .failure:
                 UIBlockingProgressHUD.dismiss()
-                showErrorAlert(message: "Не удалось войти в систему")
+                self.showErrorAlert(message: "Не удалось войти в систему")
                 break
             }
         }
@@ -103,7 +103,7 @@ extension SplashViewController: AuthViewControllerDelegate {
                 self.switchToTabBarController()
             case .failure:
                 UIBlockingProgressHUD.dismiss()
-                showErrorAlert(message: "Не удалось загрузить профиль")
+                self.showErrorAlert(message: "Не удалось загрузить профиль")
                 break
             }
         }

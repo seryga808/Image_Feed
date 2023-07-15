@@ -26,7 +26,7 @@ final class ImagesListViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == showSingleImageSegueIdentifier {
-
+            
             guard let viewController = segue.destination as? SingleImageViewController else { return }
             guard let indexPath = sender as? IndexPath else { return }
             

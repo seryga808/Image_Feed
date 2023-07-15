@@ -2,11 +2,41 @@ import Foundation
 
 final class OAuth2Service {
     
-    private enum NetworkError: Error {
-        case codeError
+    static let shared = OAuth2Service()
+    private let urlSession = URLSession.shared
+    private var task: URLSessionTask?
+    private var lastCode: String?
+    
+    public func fetchOAuthToken(_ code: String, completion: @escaping (Result<String, Error>) -> Void) {
+        
+        guard lastCode != code else {
+            return
+        }
+        
+        task?.cancel()
+        lastCode = code
+        
+        let request = makeRequest(code: code)
+        let task = urlSession.requestTask(for: request) { [weak self] (result: Result<OAuth2TokenResponseBody, Error>) in
+            guard let self = self else {
+                return
+            }
+            
+            self.task = nil
+            
+            switch result {
+            case .success(let responseBody):
+                let authToken = responseBody.accessToken
+                completion(.success(authToken))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+        self.task = task
+        task.resume()
     }
     
-    func fetchOAuthToken(_ code: String, completion: @escaping (Result<String, Error>) -> Void) {
+    private func makeRequest(code: String) -> URLRequest {
         var urlComponents = URLComponents(string: unsplashOAuth2TokenURLString)
         urlComponents?.queryItems = [
             URLQueryItem(name: "client_id", value: accessKey),
@@ -16,33 +46,13 @@ final class OAuth2Service {
             URLQueryItem(name: "grant_type", value: "authorization_code")
         ]
         
-        guard let url = urlComponents?.url else {return}
+        guard let url = urlComponents?.url else {
+            fatalError("Unable to create URL")
+        }
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard
-                let data = data,
-                let response = response as? HTTPURLResponse,
-                error == nil
-            else { 
-                completion(.failure(error ?? URLError(.badServerResponse)))
-                return
-            }
-            
-            guard (200 ... 299) ~= response.statusCode else { // http error's handling
-                completion(.failure(response.statusCode as! Error))
-                return
-            }
-            
-            do {
-                let responseBody = try JSONDecoder().decode(OAuth2TokenResponseBody.self, from: data)
-                completion(.success(responseBody.accessToken))
-            } catch let error {
-                completion(.failure(error))
-            }
-        }
-        task.resume()
+        return request
     }
+    
 }

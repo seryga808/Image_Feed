@@ -3,7 +3,7 @@ import Foundation
 struct ProfileResult: Codable {
     let username: String
     let firstName: String
-    let lastName: String? // add ?
+    let lastName: String?
     let bio: String?
     
     private enum CodingKeys: String, CodingKey {
@@ -22,7 +22,7 @@ struct Profile {
     
     init(result: ProfileResult) {
         self.username = result.username
-        self.name = "\(result.firstName) \(result.lastName ?? "")" // add ??
+        self.name = "\(result.firstName) \(result.lastName ?? "")"
         self.loginName = "@\(result.username)"
         self.bio = result.bio
     }

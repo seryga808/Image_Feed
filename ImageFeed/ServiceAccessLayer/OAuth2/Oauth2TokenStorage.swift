@@ -3,7 +3,7 @@ import SwiftKeychainWrapper
 
 final class OAuth2TokenStorage {
     
-    private enum Keys: String {
+    enum Keys: String {
         case bearerToken
     }
     

@@ -1,7 +1,5 @@
 import Foundation
 
-import Foundation
-
 struct Photo {
     let id: String
     let size: CGSize
@@ -43,6 +41,7 @@ struct LikeResult: Decodable {
 final class ImageListService {
     
     static let shared = ImageListService()
+    private init() {}
     
     private (set) var photos: [Photo] = []
     private var lastLoadedPage: Int?

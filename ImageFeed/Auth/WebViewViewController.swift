@@ -95,8 +95,6 @@ final class WebViewViewController: UIViewController {
             }
         }
     }
-    
-    
 }
 
 extension WebViewViewController: WKNavigationDelegate {

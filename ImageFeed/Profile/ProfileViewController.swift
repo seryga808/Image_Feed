@@ -41,6 +41,7 @@ final class ProfileViewController: UIViewController {
         let profileImage = UIImage(named: "userpic")
         let imageViewUserPic = UIImageView(image: profileImage)
         imageViewUserPic.tintColor = .gray
+        imageViewUserPic.backgroundColor = .clear
         return imageViewUserPic
     }()
     
@@ -104,9 +105,9 @@ final class ProfileViewController: UIViewController {
     }
     
     private func updateProfileDetails(profile: Profile) {
-        self.labelFullName.text = profile.name
-        self.labelUserName.text = profile.loginName
-        self.labelGreetings.text = profile.bio
+        labelFullName.text = profile.name
+        labelUserName.text = profile.loginName
+        labelGreetings.text = profile.bio
     }
     
     private func initProfile() {
@@ -154,6 +155,25 @@ final class ProfileViewController: UIViewController {
     }
     
     @objc private func didTapLogoutButton() {
+        let alert = UIAlertController(title: "Пока, пока!", message: "Уверены что хотите выйти?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Да", style: .default, handler: { [weak self] _ in
+            guard let self = self else { return }
+            self.logOut()
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Нет", style: .default))
+        self.present(alert, animated: true)
+    }
+    
+    private func logOut() {
+        WebViewViewController.cleanCookies()
+        guard let window = UIApplication.shared.windows.first else {
+            assertionFailure("Error")
+            return
+        }
+        
+        let splashViewController = SplashViewController()
+        window.rootViewController = splashViewController
     }
     
 }

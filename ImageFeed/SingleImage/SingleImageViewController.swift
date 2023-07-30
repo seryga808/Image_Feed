@@ -16,6 +16,8 @@ final class SingleImageViewController : UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    var fullImageURL: URL!
+    
     var image: UIImage! {
         didSet {
             guard isViewLoaded else { return }
@@ -28,12 +30,46 @@ final class SingleImageViewController : UIViewController {
         return .lightContent
     }
     
+    func showImage() {
+        UIBlockingProgressHUD.show()
+        imageView.kf.setImage(with: fullImageURL) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let imageResult):
+                self.rescaleAndCenterImageInScrollView(image: imageResult.image)
+            case .failure:
+                self.showErrorAlert()
+            }
+            UIBlockingProgressHUD.dismiss()
+        }
+    }
+    
+    private func showErrorAlert() {
+        let alert = UIAlertController(
+            title: "Что-то пошло не так",
+            message: "Попробовать ещё раз?",
+            preferredStyle: .alert
+        )
+        
+        let dismissAction = UIAlertAction(title: "Нет", style: .default ) { _ in
+            alert.dismiss(animated: true)
+        }
+        
+        let retryAction = UIAlertAction(title: "Попробовать еше раз?", style: .default) { [weak self] _ in
+            guard let self = self else { return }
+            self.showImage()
+        }
+        
+        alert.addAction(dismissAction)
+        alert.addAction(retryAction)
+        self.present(alert, animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         scrollView.minimumZoomScale = 0.1
         scrollView.maximumZoomScale = 1.25
-        imageView.image = image
-        rescaleAndCenterImageInScrollView(image: image)
+        showImage()
     }
     
     private func rescaleAndCenterImageInScrollView(image: UIImage) {
@@ -44,8 +80,7 @@ final class SingleImageViewController : UIViewController {
         let imageSize = image.size
         let hScale = visibleRectSize.width / imageSize.width
         let vScale = visibleRectSize.height / imageSize.height
-        let scale = max(maxZoomScale, max(minZoomScale, max(hScale, vScale)))
-        scrollView.maximumZoomScale = scale > scrollView.maximumZoomScale ?  scale : scrollView.maximumZoomScale
+        let scale = min(maxZoomScale, max(minZoomScale, max(hScale, vScale)))
         scrollView.setZoomScale(scale, animated: false)
         scrollView.layoutIfNeeded()
         let newContentSize = scrollView.contentSize

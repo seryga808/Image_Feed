@@ -14,7 +14,7 @@ struct ProfileResult: Codable {
     }
 }
 
-struct Profile {
+public struct Profile {
     let username: String
     let name: String
     let loginName: String
@@ -36,6 +36,7 @@ final class ProfileService {
     private(set) var profile: Profile?
     
     func fetchProfile(_ token: String, completion: @escaping (Result<ProfileResult, Error>) -> Void) {
+        assert(Thread.isMainThread)
         task?.cancel()
         
         let request = makeRequest(token: token)
@@ -61,15 +62,13 @@ final class ProfileService {
         var urlComponents = URLComponents()
         urlComponents.path = unsplashProfileUrlString
         
-        guard let url = urlComponents.url(relativeTo: defaultBaseURL) else {
+        guard let url = urlComponents.url(relativeTo: DefaultBaseURL) else {
             fatalError("Failed to create URL")
-            
         }
         
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         return request
-        
     }
 }

@@ -14,6 +14,9 @@ final class SplashViewController: UIViewController {
         return imageView
     }()
     
+    
+    // MARK: Init splash scree image
+    
     private func initSplashImage() {
         splashLogoImage.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(splashLogoImage)
@@ -25,16 +28,22 @@ final class SplashViewController: UIViewController {
         ])
     }
     
+    // MARK: view did load
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(named: "ypBlack")
         initSplashImage()
     }
     
+    // MARK: view did appear
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         checkAuthToken()
     }
+    
+    // MARK: Check auth token
     
     private func checkAuthToken() {
         if oAuth2TokenStorage.token != nil {
@@ -91,6 +100,8 @@ extension SplashViewController: AuthViewControllerDelegate {
         }
     }
     
+    // MARK: Fetching profile
+    
     private func fetchProfile(token: String) {
         profileService.fetchProfile(token) { [weak self] result in
             guard let self = self else {
@@ -109,12 +120,10 @@ extension SplashViewController: AuthViewControllerDelegate {
         }
     }
     
-    
     private func showErrorAlert(message: String) {
         let alertController = UIAlertController(title: "Что-то пошло не так(", message: message, preferredStyle: .alert)
         let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction!) in }
         alertController.addAction(OKAction)
         self.present(alertController, animated: true, completion:nil)
     }
-    
 }

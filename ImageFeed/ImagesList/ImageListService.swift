@@ -38,9 +38,9 @@ struct LikeResult: Decodable {
     let photo: PhotoResult
 }
 
-final class ImageListService {
+final class ImagesListService {
     
-    static let shared = ImageListService()
+    static let shared = ImagesListService()
     private init() {}
     
     private (set) var photos: [Photo] = []
@@ -50,8 +50,6 @@ final class ImageListService {
     private let dateFormatter = ISO8601DateFormatter()
     static let didChangeNotification = Notification.Name(rawValue: "ImagesListServiceDidChange")
     
-    // - fetch photos
-    
     func fetchPhotosNextPage() {
         guard task == nil else {
             return
@@ -60,6 +58,7 @@ final class ImageListService {
         let nextPage = lastLoadedPage == nil ? 1 : lastLoadedPage! + 1
         lastLoadedPage = (lastLoadedPage ?? 0) + 1
         
+        assert(Thread.isMainThread)
         task?.cancel()
         
         guard var request = makeRequest(path: "/photos?page=\(nextPage)&&per_page=10") else {
@@ -87,7 +86,7 @@ final class ImageListService {
                     self.photos.append(photo)
                 }
                 
-                NotificationCenter.default.post(name: ImageListService.didChangeNotification, object: self,
+                NotificationCenter.default.post(name: ImagesListService.didChangeNotification, object: self,
                                                 userInfo: ["photos": self.photos])
                 
             case .failure(let error):
@@ -106,10 +105,8 @@ final class ImageListService {
         }
     }
     
-    // - change like state
-    
     func changeLike(photoId: String, isLike: Bool, _ completion: @escaping (Result<Void, Error>) -> Void) {
-        
+        assert(Thread.isMainThread)
         task?.cancel()
         
         guard var request = makeRequest(path: "/photos/\(photoId)/like") else { return assertionFailure("Error like request")}
@@ -143,10 +140,8 @@ final class ImageListService {
         }
     }
     
-    // - request
-    
     private func makeRequest(path: String) -> URLRequest? {
-        guard let baseURL = URL(string: path, relativeTo: defaultBaseURL) else {
+        guard let baseURL = URL(string: path, relativeTo: DefaultBaseURL) else {
             assertionFailure("url is nil")
             return nil
         }

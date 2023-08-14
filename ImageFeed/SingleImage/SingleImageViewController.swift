@@ -2,6 +2,8 @@ import UIKit
 
 final class SingleImageViewController : UIViewController {
     
+    //MARK: Outlets
+    
     @IBOutlet private var imageView: UIImageView!
     @IBOutlet private weak var scrollView: UIScrollView!
     
@@ -15,6 +17,8 @@ final class SingleImageViewController : UIViewController {
     @IBAction private func didTapBackButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+    
+    //MARK: Variables
     
     var fullImageURL: URL!
     

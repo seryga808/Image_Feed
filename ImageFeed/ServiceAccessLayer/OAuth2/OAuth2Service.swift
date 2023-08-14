@@ -6,8 +6,8 @@ final class OAuth2Service {
     private let urlSession = URLSession.shared
     private var task: URLSessionTask?
     private var lastCode: String?
-    
     public func fetchOAuthToken(_ code: String, completion: @escaping (Result<String, Error>) -> Void) {
+        assert(Thread.isMainThread)
         
         guard lastCode != code else {
             return
@@ -39,9 +39,9 @@ final class OAuth2Service {
     private func makeRequest(code: String) -> URLRequest {
         var urlComponents = URLComponents(string: unsplashOAuth2TokenURLString)
         urlComponents?.queryItems = [
-            URLQueryItem(name: "client_id", value: accessKey),
-            URLQueryItem(name: "client_secret", value: secretKey),
-            URLQueryItem(name: "redirect_uri", value: redirectURI),
+            URLQueryItem(name: "client_id", value: AccessKey),
+            URLQueryItem(name: "client_secret", value: SecretKey),
+            URLQueryItem(name: "redirect_uri", value: RedirectURI),
             URLQueryItem(name: "code", value: code),
             URLQueryItem(name: "grant_type", value: "authorization_code")
         ]
@@ -54,5 +54,4 @@ final class OAuth2Service {
         request.httpMethod = "POST"
         return request
     }
-    
 }

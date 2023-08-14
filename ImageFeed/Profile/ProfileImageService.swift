@@ -24,6 +24,7 @@ final class ProfileImageService {
     private let urlSession = URLSession.shared
     
     func fetchProfileImageURL(username: String, token: String, _ completion: @escaping (Result<String, Error>) -> Void) {
+        assert(Thread.isMainThread)
         task?.cancel()
         
         let request = makeRequest(token: token, username: username)
@@ -54,7 +55,7 @@ final class ProfileImageService {
         var urlComponents = URLComponents()
         urlComponents.path = unsplashUsersUrlString + "/\(username)"
         
-        guard let url = urlComponents.url(relativeTo: defaultBaseURL) else {
+        guard let url = urlComponents.url(relativeTo: DefaultBaseURL) else {
             assertionFailure("Failed to create URL")
             return URLRequest(url: URL(string: "")!)
         }
